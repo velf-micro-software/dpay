@@ -1,0 +1,52 @@
+<div class="modal fade" id="mdl-gasto" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true"
+  tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">
+          <i class="bi bi-patch-minus-fill me-2"></i>Registrar Gasto(s)
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" id="frm-gasto" onsubmit="setGasto(event,this)" action="#">
+          <div class="row">
+            <div class="col">
+              <select required id="opt-gasto" name="opt-gasto" onchange="selectGasto(this)" class="form-select mb-3">
+                <option selected disabled value="">Seleccionar Tipo de Gasto</option>
+                <option value="O">Otro(s) Gastos</option>
+                <option value="1">Comida</option>
+                <option value="2">Despistaje</option>
+                <option value="3">Gasolina y/o Combustible</option>
+                <option value="4">Repuesto(s) y/o Reparación</option>
+                <option value="5">Vestimenta</option>
+              </select>
+              <label for="fgasto">Fecha</label>
+              <input type="date" class="form-control mb-3" id="fgasto" name="fgasto">
+              <textarea hidden placeholder="Descripción" class="form-control mb-3" name="cgasto" id="cgasto"
+                rows="2"></textarea>
+              <div id="dv-gasto" class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                <input required id="monto-gasto" name="monto-gasto" type="number" step="0.1" min="0.1"
+                  class="form-control" placeholder="Monto de Gasto" />
+              </div>
+              <div id="dv-gasto" class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-key"></i></span>
+                <input required id="key-gasto" name="monto-gasto" type="number" step="0.1" min="0.1"
+                  class="form-control" placeholder="Autorización" />
+              </div>
+
+            </div>
+          </div>
+          <input type="hidden" name="action">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;" charset="utf-8" />
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="es">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=8,IE=9,IE=10,IE=11" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="unknow" />
+  <title>dpay</title>
+  <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+  <link rel="stylesheet" href="../assets/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="../assets/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="../assets/css/demo.css" />
+  <link rel="stylesheet" href="../assets/vendor/libs/bootstrap/bi.css" />
+  <link rel="stylesheet" href="../assets/vendor/libs/select2/select2.min.css" />
+  <link rel="stylesheet" href="../assets/vendor/libs/select2/select2.b5theme.css" />
+  <script defer src="../assets/vendor/libs/menujs/helpers.js"></script>
+  <script>
+    function quitBox(cmd) {
+      window.location.replace('../');
+      window.close();
+    }
+
+    if(sessionStorage.getItem('log') != 'true'){
+      quitBox('quit');
+    }
+  </script>
+</head>
+
+<body>
+  <span id="top"></span>
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+      <aside id="layout-menu" class="layout-menu menu-vertical w-0 menu bg-menu-theme shadow-lg">
+        <div class="app-brand demo justify-content-center m-0">
+          <a href="#" class="app-brand-link">DPay Software</a>
+        </div>
+
+        <div class="menu-inner-shadow"></div>
+        <ul class="menu-inner nav nav-pills nav-flush text-center align-items-center">
+          <li class="nav-item">
+            <a href="#" class="nav-link py-3 px-2">
+              <i class="bi-house fs-1"></i><br />
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="$('.layout-overlay').click(); loadAccountClients();" data-bs-toggle="modal"
+              data-bs-target="#mdl-newAcc" class="nav-link py-3 px-2">
+              <i class="bi bi-cash-coin fs-1"></i><br />
+              Nueva Cuenta
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#" onclick="$('.layout-overlay').click(); loadTableClients();"
+              data-bs-toggle="modal" data-bs-target="#mdl-client">
+              <i class="bi bi-person-square fs-1"></i><br />
+              Cliente(s)
+            </a>
+          </li>
+          <!---
+          <li>
+            <a class="nav-link" href="#" onclick="$('.layout-overlay').click();" data-bs-toggle="modal"
+              data-bs-target="#mdl-gasto" class="nav-link py-3 px-2">
+              <i class="bi bi-patch-minus-fill fs-1"></i><br />
+              Registrar Gasto(s)
+            </a>
+          </li>
+        -->
+          <li>
+            <a class="nav-link" href="#" onclick="loadResumen();" data-bs-toggle="modal" data-bs-target="#mdl-resumen"
+              class="nav-link py-3 px-2">
+              <i class="bi bi-file-text fs-1"></i><br />
+              Ver Resumen
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="layout-page">
+
+        <nav
+          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+          id="layout-navbar">
+          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <i class="bx bx-menu bx-md"></i>
+            </a>
+          </div>
+
+          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <div class="navbar-nav align-items-center">
+              <div class="nav-item d-flex align-items-center">
+                <button class="btn" onclick="syncData();" type="button">
+                  <span><i class="bi bi-arrow-repeat m-1"></i>Sincronizar<span class="text-primary"></span></span>
+                  <br>
+                  <small>
+                    <span id="nav-date"></span>
+                  </small>
+                </button>
+              </div>
+            </div>
+
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <!-- User -->
+              <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <div class="avatar avatar-online">
+                    <h2 class="align-items-center pt-1">
+                      <i class="bi bi-person-circle bx-md text-dark"></i>
+                    </h2>
+                  </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="avatar avatar-online">
+                            <h2 class="align-items-center pt-1">
+                              <i class="bi bi-person-circle text-dark"></i>
+                            </h2>
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <span class="fw-semibold d-block txt-user">Usuario</span>
+                          <small class="text-muted txt-role">Administrador</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <button type="button" id="btn-logout" class="dropdown-item" onclick="return quitBox('quit');">
+                      <i class="bx bx-power-off me-2"></i>
+                      <span class="align-middle">Salir</span>
+                    </button>
+                  </li>
+                </ul>
+              </li>
+              <!--/ User -->
+            </ul>
+          </div>
+        </nav>
+
+        <div class="content-wrapper">
+
+          <div class="container-xxl flex-grow-1 container-p-y">
+
+            <div class="input-group input-group-merge mb-3 col shadow-lg">
+              <span class="input-group-text"><label for="txt-search"><i class="bx bx-search bx-md"></i></label></span>
+              <input onkeyup="filterAccount(this,'tbl-acc');" placeholder="Buscar:" class="form-control" type="text"
+                name="txt-search" id="txt-search">
+              <span class="input-group-text dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                <i title="Filtrar Cuentas" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  class="bx bx-filter bx-md"></i>
+              </span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" onclick="showOnlyAccounts('T')" href="javascript:void(0);">
+                  <i class="bi bi-card-list me-1"></i> Todos
+                </a>
+                <a class="dropdown-item" onclick="showOnlyAccounts('V')" href="javascript:void(0);">
+                  <i class="bx bx-check me-1"></i> Verificados
+                </a>
+                <a class="dropdown-item" onclick="showOnlyAccounts('P')" href="javascript:void(0);">
+                  <i class="bi bi-hourglass-split me-1"></i> Pendientes
+                </a>
+              </div>
+            </div>
+
+            <table id="tbl-acc" class="table table-sm bg-light text-center">
+              <thead class="bg-primary rounded-top">
+                <th title="Reputación del Cliente" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  class="text-white fw-bold"><i class="bi bi-hand-thumbs-up-fill text-success"></i> - <i
+                    class="bi bi-hand-thumbs-down-fill text-danger"></i></th>
+                <th title="Cobranza de Cliente(s)" data-bs-toggle="tooltip" data-bs-placement="bottom" id="tcuenta"
+                  class="text-white align-middle fw-bold"><i class="bi bi-card-list bx-md fw-bold"></i></th>
+                <th title="Prestamo y Cuota" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  class="text-white fw-bold"><i class="bi bi-cash-coin bx-md fw-bold"></i></th>
+                <th title="N° de Cuotas" data-bs-toggle="tooltip" data-bs-placement="bottom" class="text-white fw-bold">
+                  <i class="bi bi-hash bx-md"></i>
+                </th>
+                <th title="Ver Más" data-bs-toggle="tooltip" data-bs-placement="bottom" class="text-white fw-bold"><i
+                    class="bi bi-eye-fill bx-md"></i></th>
+              </thead>
+              <tbody style="max-height: calc(100vh - 200px); overflow-y: auto;">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <div id="div-totop" class="cmn-divfloat">
+      <a href="#top" class="btn btn-primary cmn-btncircle">
+        <i class="bi bi-arrow-up"></i>
+      </a>
+    </div>
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script defer src="../assets/vendor/libs/bootstrap/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/momentjs/moment.min.js"></script>
+    <script defer src="../assets/vendor/libs/chartJs/chart.min.js"></script>
+    <script defer src="../assets/vendor/libs/select2/select2.min.js"></script>
+    <script defer src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script defer src="../assets/vendor/libs/menujs/helpers.js"></script>
+    <script defer src="../assets/vendor/libs/menujs/menu.js"></script>
+    <script defer src="../assets/vendor/libs/misc/main.js"></script>
+    <script src="../assets/vendor/libs/cyp/cyp.js"></script>
+    <script src="../assets/vendor/libs/cyp/cyp-aes.js"></script>
+    <script src="../assets/vendor/libs/cyp/cyp-uck.js"></script>
+    <script src="../assets/vendor/libs/misc/util.js"></script>
+    <script src="../assets/vendor/libs/misc/mod.js"></script>
+    <script src="../assets/vendor/libs/fbs/app.js"></script>
+    <script src="../assets/vendor/libs/fbs/stg.js"></script>
+    <script src="../assets/vendor/libs/misc/cfg.js"></script>
+</body>
+
+</html>

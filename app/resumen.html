@@ -1,0 +1,41 @@
+<div class="modal fade" id="mdl-resumen" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true"
+  tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="titleResumen">
+          <i class="bi bi-file-text me-2"></i>Resumen del Día ()
+        </h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="chart">
+          <div class="mb-1">
+            <div class="card-body pt-0 mt-0">
+              <div class="row mb-2 chart-pie">
+                <div class="chartjs-size-monitor">
+                  <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                  </div>
+                  <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                  </div>
+                </div>
+                <canvas id="myPieChart" width="316" height="280" class="chartjs-render-monitor"
+                  style="display: block; width: 302px; height: 245px;"></canvas>
+              </div>
+              <div class="col">
+                <span>A Cobrar: <b id="tcobrar">0</b></span><br>
+                <span>Cobrado: <b id="tcobrado">0</b></span><br>
+                <span>Estado: <b id="estadocxc">%0</b></span><br>
+                <!--<span>Gastado: <b id="gastos">0</b></span><br>-->
+                <span>Cuentas sin Pago: <b id="spagos">0</b></span><br>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

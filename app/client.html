@@ -1,0 +1,30 @@
+<div class="modal fade" id="mdl-client" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true"
+  tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">
+          <i class="bi bi-person-square me-2"></i>Clientes Registrados
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group input-group-merge mb-2 col shadow-lg">
+          <span class="input-group-text"><label for="txt-search-cli"><i class="bx bx-search"></i></label></span>
+          <input onkeyup="filterAccount(this,'tbl-client');" placeholder="Buscar:" class="form-control form-control-sm"
+            type="text" name="txt-search-cli" id="txt-search-cli">
+        </div>
+        <table id="tbl-client" class="table table-sm">
+          <thead>
+            <th>#</th>
+            <th>Cliente</th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody id="list-client">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

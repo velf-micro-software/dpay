@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;" charset="utf-8" />
+  <meta charset="UTF-8">
+  <meta http-equiv="content-language" content="es">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=8,IE=9,IE=10,IE=11" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="author" content="unknow" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>dpay</title>
+  <link rel="stylesheet" href="./assets/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="./assets/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="./assets/css/demo.css" />
+  <link rel="stylesheet" href="./assets/vendor/libs/bootstrap/bi.css" />
+</head>
+<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container layout-container d-flex justify-content-center align-items-center">
+      <div class="layout-page">
+        <div class="content-wrapper">
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="text-center">
+              <h1>DPay Software</h1>
+              <button id="btn-enter" type="button" class="btn btn-primary">
+                Entrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+  </div>
+</body>
+<script>
+
+  window.history.forward();
+  function noBack(){
+    window.history.forward();
+  }
+
+  const btn = document.getElementById('btn-enter');
+  localStorage.clear();
+  sessionStorage.clear();
+  btn.addEventListener('click',() => {
+    sessionStorage.setItem('log',true);
+    window.location.replace('./app/');
+  });
+</script>
+</html>

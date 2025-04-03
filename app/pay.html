@@ -1,0 +1,45 @@
+<div class="modal fade" id="mdl-pago" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true"
+  tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">
+          <i class="bi bi-plus"></i>Registrar Pago
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" id="frm-pago" onsubmit="regPay(event,this)" action="#">
+          <div class="row">
+            <div class="col">
+              <select id="tp" onchange="noPago(this);" class="form-select mb-3">
+                <option selected value="1">Cuota</option>
+                <option selected value="2">Dinero</option>
+                <option value="0">No Pagó</option>
+              </select>
+              <label for="fpago">Fecha</label>
+              <input required type="date" class="form-control" id="fpago" name="fpago">
+
+              <label for="txt-desc">Descripción / Concepto</label>
+              <textarea required class="form-control mb-3" name="txt-desc" id="txt-desc" rows="2"></textarea>
+              <div id="dv-monto" class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                <input required id="pago-cuota" name="pago-cuota" type="number" step="0.1" min="0.1"
+                  class="form-control" placeholder="Monto" />
+              </div>
+              <input type="hidden" id="nopago" name="nopago">
+              <input type="hidden" name="doc">
+              <input type="hidden" name="cod">
+            </div>
+          </div>
+          <div class="modal-footer p-1">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

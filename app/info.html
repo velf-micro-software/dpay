@@ -1,0 +1,47 @@
+<div class="modal fade" id="mdl-info" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true"
+  tabindex="-1" data-bs-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">
+          <i class="bi bi-info-circle"></i> Cliente
+        </h5>
+        <button type="button" class="text-primary text-end m-2 p-1 nav-link border-0" id="btn-editclient">
+          <i class="bi bi-pencil"></i>Editar
+        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div id="frm-info-saved" class="col">
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="bi bi-person-vcard-fill"></i></span>
+              <input type="text" id="inom" readonly class="form-control" placeholder="Nombre" />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+              <input type="text" id="idir" readonly class="form-control" placeholder="Dirección" />
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+              <input type="text" id="itel" readonly class="form-control" placeholder="Teléfono" />
+            </div>
+          </div>
+          <div hidden id="frm-info-cli" class="col">
+            <input required class="form-control mb-2" type="text" placeholder="*Documento 1" name="doc" id="doc">
+            <input class="form-control mb-2" type="text" placeholder="Documento 2" name="doc2" id="doc2">
+            <input required class="form-control mb-2" type="text" placeholder="*Nombre(s)" name="nom" id="nom">
+            <input required class="form-control mb-2" type="text" placeholder="*Apellido(s)" name="ape" id="ape">
+            <input class="form-control mb-2" type="text" placeholder="Alias" name="alias" id="alias">
+            <textarea required class="form-control mb-2" placeholder="*Dirección" name="dir" id="dir"
+              rows="2"></textarea>
+            <input required class="form-control mb-2" type="text" placeholder="*Teléfono" name="tel" id="tel">
+            <input class="form-control mb-2" type="text" placeholder="Referido por:" name="ref" id="ref">
+            <button type="button" id="btn-edit-confirm" class="btn btn-sm btn-primary">Guardar</button>
+            <button type="button" id="btn-edit-cancel" class="btn btn-sm btn-secondary">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
